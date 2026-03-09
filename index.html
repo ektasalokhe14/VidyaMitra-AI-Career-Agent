@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyaMitra | Your AI Career Agent</title>
+    
+    <!-- External Resources -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { display: block; overflow-y: auto; }
+        
+        /* Custom Landing Page Styles */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 8%;
+            min-height: 90vh;
+        }
+        .hero-text { flex: 1.2; }
+        .hero-image { flex: 0.8; text-align: right; position: relative; }
+        .hero-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(0,210,255,0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 8%;
+        }
+
+        .how-it-works {
+            background: rgba(0,210,255,0.02);
+            padding: 80px 8%;
+            text-align: center;
+        }
+        .step-box { padding: 30px; transition: 0.3s; }
+        .step-num {
+            font-size: 40px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.1);
+            margin-bottom: -20px;
+        }
+
+        .login-box {
+            max-width: 450px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        /* Nav Glassmorphism */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 1000;
+            background: rgba(6, 8, 12, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between;
+            padding: 15px 8%; box-sizing: border-box;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav>
+        <div class="logo" style="font-size: 26px; font-weight: 800; color: #00d2ff;">Vidya<span>Mitra</span></div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <a href="#features" style="color: #ccc; text-decoration: none; font-size: 14px;">Features</a>
+            <a href="#login" class="btn" style="padding: 8px 25px;">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text" data-aos="fade-right">
+            <span style="color: #00d2ff; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 12px;">AI-Powered Career Intelligence</span>
+            <h1 style="font-size: 4.5rem; line-height: 1.1; margin-top: 10px;" class="text-gradient">Analyze. <br> Improve. <br> Achieve.</h1>
+            <p style="font-size: 1.1rem; color: #bbb; margin: 25px 0; max-width: 500px; line-height: 1.6;">
+                VidyaMitra is an intelligent career assistant designed to evaluate resumes, analyze skill gaps, 
+                provide mock interviews, and generate personalized learning roadmaps.
+            </p>
+            <div style="display: flex; gap: 15px;">
+                <a href="#login" class="btn">Login to Dashboard</a>
+                <a href="#how-it-works" class="btn" style="background: transparent; border: 1px solid #444;">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="zoom-in">
+            <!-- Professional Tech Image -->
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" alt="Tech Dashboard">
+        </div>
+    </section>
+
+    <!-- Features / Subparts Section -->
+    <section id="features" style="padding: 100px 0;">
+        <h2 class="section-title" data-aos="fade-up">Our <span class="text-gradient">Intelligent Subparts</span></h2>
+        <div class="info-grid">
+            
+            <div class="glass-card step-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-file-medical" style="font-size: 30px; color: #00d2ff; margin-bottom: 15px; display: block;"></i>
+                <h3>AI Evaluator</h3>
+                <p>Upload your skills for a real-time ATS score and AI-detected gap mapping (Scenario 1).</p>
+            </div>
+
+            <div class="glass-card step-box" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-magic" style="font-size: 30px; color: #00d2ff; margin-bottom: 15px; display: block;"></i>
+                <h3>Resume Builder</h3>
+                <p>Create professional resumes with our advanced editor and live preview functionality.</p>
+            </div>
+
+            <div class="glass-card step-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-microphone" style="font-size: 30px; color: #00d2ff; margin-bottom: 15px; display: block;"></i>
+                <h3>Mock Interview</h3>
+                <p>Practice with AI-driven questions and get instant feedback on your performance (Scenario 2).</p>
+            </div>
+
+            <div class="glass-card step-box" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-map-signs" style="font-size: 30px; color: #00d2ff; margin-bottom: 15px; display: block;"></i>
+                <h3>Skill Roadmap</h3>
+                <p>Follow a structured, 4-phase upskilling plan tailored to your career goals (Scenario 3).</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title" data-aos="fade-up">How <span class="text-gradient">VidyaMitra Works</span></h2>
+        <div class="info-grid">
+            <div class="step-box" data-aos="fade-left">
+                <div class="step-num">01</div>
+                <h4>Upload Resume</h4>
+                <p style="font-size: 13px; color: #888;">Enter your technical skills and education details.</p>
+            </div>
+            <div class="step-box" data-aos="fade-left" data-aos-delay="100">
+                <div class="step-num">02</div>
+                <h4>AI Analysis</h4>
+                <p style="font-size: 13px; color: #888;">System calculates your industry readiness score.</p>
+            </div>
+            <div class="step-box" data-aos="fade-left" data-aos-delay="200">
+                <div class="step-num">03</div>
+                <h4>Bridge Gaps</h4>
+                <p style="font-size: 13px; color: #888;">Identify missing skills like Cloud or React.</p>
+            </div>
+            <div class="step-box" data-aos="fade-left" data-aos-delay="300">
+                <div class="step-num">04</div>
+                <h4>Master Interviews</h4>
+                <p style="font-size: 13px; color: #888;">Simulate technical rounds with AI feedback.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" style="padding: 100px 0;">
+        <div class="glass-card login-box" data-aos="zoom-in">
+            <h2 class="text-gradient">Get Started Today</h2>
+            <p style="font-size: 14px; color: #888; margin-bottom: 25px;">Enter your name to unlock your personalized Dashboard Hub.</p>
+            <input type="text" id="userIn" placeholder="Enter Full Name (e.g., Ekta Salokhe)">
+            <input type="password" placeholder="Password">
+            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="startApp()">Login to Dashboard</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 50px 8%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 14px;">
+        <div style="margin-bottom: 20px;">
+            <span style="color: #00d2ff; font-weight: bold;">VidyaMitra</span> | The Intelligent Career Agent
+        </div>
+        <p>&copy; 2026 CS Engineering Final Project | Designed by Ekta Salokhe</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function startApp() {
+            const name = document.getElementById('userIn').value;
+            if(!name) { alert("Please enter your name to login."); return; }
+            localStorage.setItem("username", name);
+            window.location.href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>

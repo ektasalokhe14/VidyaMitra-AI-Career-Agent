@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Advanced Builder | VidyaMitra</title><link rel="stylesheet" href="style.css">
+<style>
+    .split { display:flex; gap:20px; }
+    .resume-preview { flex:1; background:white; color:black; padding:30px; border-radius:10px; font-family:serif; height:fit-content; position:sticky; top:20px; }
+    .form-side { flex:1; }
+    @media print { .sidebar, .form-side, .btn {display:none;} .main {margin:0;} .resume-preview {width:100%; border:none;} }
+</style>
+</head>
+<body>
+    <div class="sidebar">... (Get Your Resume) ...</div>
+    <div class="main">
+        <h1 class="text-gradient">Professional Resume Builder</h1>
+        <div class="split">
+            <div class="form-side">
+                <div class="glass-card">
+                    <h3>Personal Details</h3>
+                    <input type="text" id="name" placeholder="Full Name" oninput="draw()">
+                    <input type="text" id="contact" placeholder="Email | Phone | LinkedIn" oninput="draw()">
+                    <textarea id="summary" placeholder="Professional Summary..." oninput="draw()"></textarea>
+                </div>
+                <div class="glass-card">
+                    <h3>Experience & Projects</h3>
+                    <textarea id="exp" placeholder="Experience (Company, Role, Dates...)" oninput="draw()"></textarea>
+                    <textarea id="proj" placeholder="Project (Title, Tech, Description...)" oninput="draw()"></textarea>
+                </div>
+                <div class="glass-card">
+                    <h3>Skills & Education</h3>
+                    <input type="text" id="edu" placeholder="Education (Degree, College, CGPA)" oninput="draw()">
+                    <input type="text" id="skills" placeholder="Skills (Java, Python, React...)" oninput="draw()">
+                </div>
+                <button class="btn" style="width:100%" onclick="window.print()">Download Resume PDF</button>
+            </div>
+
+            <div class="resume-preview" id="preview">
+                <h1 id="pName" style="text-align:center; border-bottom:2px solid #333;">NAME</h1>
+                <p id="pContact" style="text-align:center; font-size:12px;">Contact Info</p>
+                <h4>Summary</h4><p id="pSummary" style="font-size:13px;"></p>
+                <h4>Experience</h4><p id="pExp" style="font-size:13px; white-space:pre-line;"></p>
+                <h4>Projects</h4><p id="pProj" style="font-size:13px; white-space:pre-line;"></p>
+                <h4>Education</h4><p id="pEdu" style="font-size:13px;"></p>
+                <h4>Skills</h4><p id="pSkills" style="font-size:13px; font-weight:bold;"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function draw() {
+            document.getElementById('pName').innerText = document.getElementById('name').value || "NAME";
+            document.getElementById('pContact').innerText = document.getElementById('contact').value || "Contact Info";
+            document.getElementById('pSummary').innerText = document.getElementById('summary').value;
+            document.getElementById('pExp').innerText = document.getElementById('exp').value;
+            document.getElementById('pProj').innerText = document.getElementById('proj').value;
+            document.getElementById('pEdu').innerText = document.getElementById('edu').value;
+            document.getElementById('pSkills').innerText = document.getElementById('skills').value;
+        }
+    </script>
+</body>
+</html>

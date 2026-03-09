@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>AI Mock Interview | VidyaMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container { max-width: 700px; margin: auto; }
+        .option-btn { 
+            display: block; width: 100%; padding: 15px; margin: 10px 0; 
+            background: rgba(255,255,255,0.05); border: 1px solid #444; 
+            color: white; border-radius: 10px; cursor: pointer; text-align: left; 
+        }
+        .option-btn:hover { border-color: #00d2ff; background: rgba(0,210,255,0.1); }
+        .timer { font-size: 20px; font-weight: bold; color: #ff4b2b; text-align: center; margin-bottom: 20px; }
+        .feedback { display: none; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="text-gradient">VidyaMitra</h2>
+        <a href="dashboard.html" class="nav-link">🏠 Dashboard Hub</a>
+        <a href="resume-evaluator.html" class="nav-link">🔍 AI Evaluator</a>
+        <a href="builder.html" class="nav-link">📝 Resume Builder</a>
+        <a href="assessment.html" class="nav-link">🧠 Skill Quiz</a>
+        <a href="roadmap.html" class="nav-link">📅 Career Roadmap</a>
+        <a href="interview.html" class="nav-link active">🎤 Mock Interview</a>
+        <a href="chatbot.html" class="nav-link">🤖 AI Assistant</a>
+    </div>
+
+    <div class="main">
+        <h1 class="text-gradient">AI Mock Interview Simulator</h1>
+        <p style="color:#888;">Evaluate your confidence, accuracy, and technical readiness.</p>
+
+        <div class="glass-card quiz-container" id="quiz-box">
+            <div class="timer" id="timer">Time Left: 05:00</div>
+            <div id="question-area">
+                <span id="q-type" style="color:#00d2ff; font-size:12px; font-weight:bold;">TECHNICAL</span>
+                <h2 id="q-text" style="margin-top:10px;">Loading AI Questions...</h2>
+                <textarea id="answer" placeholder="Type your answer here or select confidence level..." style="height:100px;"></textarea>
+                <button class="btn" style="width:100%; margin-top:20px;" onclick="nextQuestion()">Submit & Next Question</button>
+            </div>
+
+            <!-- Results Section (Hidden) -->
+            <div id="result-area" class="feedback">
+                <h2 class="text-gradient">Interview Completed!</h2>
+                <p>AI Performance Score: <span id="score" style="font-size:24px; color:#00ff88;">0</span>%</p>
+                <p id="ai-comment" style="font-size:14px; color:#ccc; margin:15px 0;"></p>
+                <a href="dashboard.html" class="btn">Return to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let questions = [];
+        let currentIdx = 0;
+        let score = 0;
+
+        // Fetch Questions from Backend (Scenario 2)
+        async function loadQuestions() {
+            try {
+                const res = await fetch('http://127.0.0.1:8010/get-questions');
+                questions = await res.json();
+                displayQuestion();
+            } catch (e) {
+                document.getElementById('q-text').innerText = "Error: Backend Offline (Port 8005)";
+            }
+        }
+
+        function displayQuestion() {
+            if (currentIdx < questions.length) {
+                const q = questions[currentIdx];
+                document.getElementById('q-type').innerText = q.type.toUpperCase();
+                document.getElementById('q-text').innerText = q.q;
+                document.getElementById('answer').value = "";
+            } else {
+                showResults();
+            }
+        }
+
+        function nextQuestion() {
+            const ans = document.getElementById('answer').value;
+            if(!ans) { alert("Please provide an answer for AI evaluation."); return; }
+            
+            // AI Scoring Simulation
+            score += Math.floor(Math.random() * 20) + 1; // Simulated AI analysis
+            currentIdx++;
+            displayQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('question-area').style.display = "none";
+            document.getElementById('timer').style.display = "none";
+            document.getElementById('result-area').style.display = "block";
+            
+            document.getElementById('score').innerText = score;
+            let comment = "";
+            if (score > 80) comment = "Excellent! You showed high confidence and technical accuracy. You are job-ready.";
+            else if (score > 50) comment = "Good performance. Focus more on technical depth in React and communication flow.";
+            else comment = "Focus on basics. We recommend using our 'Career Roadmap' and 'AI Chatbot' for better preparation.";
+            
+            document.getElementById('ai-comment').innerText = comment;
+        }
+
+        // Timer Logic
+        let timeLeft = 300;
+        setInterval(() => {
+            if(timeLeft > 0 && currentIdx < 5) {
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                document.getElementById('timer').innerText = `Time Left: ${m}:${s < 10 ? '0'+s : s}`;
+            }
+        }, 1000);
+
+        loadQuestions();
+    </script>
+</body>
+</html>

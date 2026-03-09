@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Chatbot | VidyaMitra</title><link rel="stylesheet" href="style.css">
+<style>
+    .chat-box { height:400px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+    .bubble { padding:10px 15px; border-radius:15px; max-width:70%; font-size:14px; }
+    .bot { background:rgba(0,210,255,0.1); align-self:flex-start; color:#00d2ff; }
+    .user { background:#00d2ff; color:black; align-self:flex-end; font-weight:bold; }
+</style>
+</head>
+<body>
+    <div class="sidebar">... (chat with me ) ...</div>
+    <div class="main">
+        <h1>VidyaMitra <span class="text-gradient">AI Assistant</span></h1>
+        <div class="glass-card">
+            <div class="chat-box" id="chat">
+                <div class="bubble bot">Hello! I am your career assistant. How can I help you today?</div>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <input type="text" id="msg" placeholder="Ask about resume tips, jobs, or roadmaps...">
+                <button class="btn" onclick="ask()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function ask() {
+            const txt = document.getElementById('msg').value;
+            const box = document.getElementById('chat');
+            if(!txt) return;
+            box.innerHTML += `<div class="bubble user">${txt}</div>`;
+            document.getElementById('msg').value = "";
+            try {
+                const res = await fetch('http://127.0.0.1:8010/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ text: txt })
+                });
+                const data = await res.json();
+                box.innerHTML += `<div class="bubble bot">${data.reply}</div>`;
+            } catch { box.innerHTML += `<div class="bubble bot">Error: Backend Offline (Port 8010)</div>`; }
+            box.scrollTop = box.scrollHeight;
+        }
+    </script>
+</body>
+</html>

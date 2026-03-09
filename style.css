@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+:root { --blue: #00d2ff; --purple: #9d50bb; --bg: #06080c; --glass: rgba(255, 255, 255, 0.05); }
+
+body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: white; overflow-x: hidden; }
+.sidebar { width: 260px; height: 100vh; background: rgba(0,0,0,0.5); border-right: 1px solid rgba(255,255,255,0.1); padding: 30px; position: fixed; }
+.main { margin-left: 320px; padding: 40px; }
+
+.glass-card { background: var(--glass); backdrop-filter: blur(15px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 25px; transition: 0.3s; }
+.glass-card:hover { border-color: var(--blue); transform: translateY(-5px); }
+
+.text-gradient { background: linear-gradient(90deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+.btn { background: linear-gradient(90deg, var(--blue), var(--purple)); border: none; padding: 12px 30px; border-radius: 50px; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn:hover { box-shadow: 0 0 20px var(--blue); transform: scale(1.05); }
+
+input, textarea, select { width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: white; border-radius: 12px; margin-top: 10px; outline: none; }
+.nav-link { display: block; padding: 15px; color: #aaa; text-decoration: none; border-radius: 10px; margin-bottom: 5px; }
+.nav-link:hover, .active { background: var(--glass); color: var(--blue); }
+
+/* Roadmap Timeline */
+.timeline { border-left: 2px solid var(--blue); padding-left: 20px; margin-left: 10px; }
+.step { position: relative; margin-bottom: 20px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+.step::before { content: ''; position: absolute; left: -27px; top: 15px; width: 12px; height: 12px; background: var(--blue); border-radius: 50%; box-shadow: 0 0 10px var(--blue); }

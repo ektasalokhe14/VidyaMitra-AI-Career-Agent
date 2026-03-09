@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Skill Quiz | VidyaMitra</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <div class="sidebar">
+        <h2 class="text-gradient">VidyaMitra</h2>
+        <a href="dashboard.html" class="nav-link">🏠 Dashboard Hub</a>
+        <a href="resume-evaluator.html" class="nav-link">🔍 AI Evaluator</a>
+        <a href="builder.html" class="nav-link">📝 Resume Builder</a>
+        <a href="assessment.html" class="nav-link active">🧠 Skill Quiz</a>
+        <a href="roadmap.html" class="nav-link">📅 Career Roadmap</a>
+        <a href="interview.html" class="nav-link">🎤 Mock Interview</a>
+        <a href="chatbot.html" class="nav-link">🤖 AI Assistant</a>
+    </div>
+
+    <div class="main">
+        <h1 class="text-gradient">Skill Assessment Quiz</h1>
+        <div class="glass-card">
+            <h3>Determine Your Career Path</h3>
+            <p style="margin-bottom:20px; color:#aaa;">Select the domain that interests you most:</p>
+            <div style="display:grid; gap:10px;">
+                <button class="btn" style="text-align:left;" onclick="res('Web Development')">🌐 Web Development</button>
+                <button class="btn" style="text-align:left;" onclick="res('Data Science')">📊 Data Science</button>
+                <button class="btn" style="text-align:left;" onclick="res('Cybersecurity')">🔐 Cybersecurity</button>
+                <button class="btn" style="text-align:left;" onclick="res('AI Engineering')">🤖 AI Engineering</button>
+            </div>
+            <div id="quizResult" class="glass-card" style="margin-top:20px; display:none; border-color:#00ff88;">
+                <h4>Result: You are a natural <span id="careerPath" style="color:#00ff88;"></span>!</h4>
+                <p style="font-size:13px;">We recommend checking your personalized Roadmap next.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function res(path) {
+            document.getElementById('quizResult').style.display = "block";
+            document.getElementById('careerPath').innerText = path;
+            localStorage.setItem("userPath", path);
+        }
+    </script>
+</body>
+</html>
